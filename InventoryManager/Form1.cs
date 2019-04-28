@@ -13,19 +13,20 @@ namespace InventoryManager
 {
     public partial class Form1 : Form
     {
-        public static inventory IM = new inventory();
+        public static Inventory IM = new Inventory();
         public Form1()
         {
-            MessageBox.Show("Welcome To My Inventory Manager!");
             InitializeComponent();
+            MessageBox.Show("Welcome To My Inventory Manager!");                
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Attempt to initialize datagridview with info from file
+            //Read from file and insert into datagridview
             StreamReader sr = new StreamReader("inventoryTextFile.txt");
-            DataTable table = new DataTable();
             string[] data = sr.ReadLine().Split(' ');
+            DataTable table = new DataTable();
             foreach (string s in data)
             {
                 table.Columns.Add();
@@ -34,7 +35,7 @@ namespace InventoryManager
             while ((nextLine = sr.ReadLine()) != null)
             {
                 DataRow newRow = table.NewRow();
-                string[] str = nextLine.Split();
+                string[] str = nextLine.Split(' ');
                 for (int i = 0; i < str.Length; i++)
                 {
                     newRow[i] = str[i];
@@ -43,33 +44,42 @@ namespace InventoryManager
             }
             sr.Close();
             dataGridView_inventory.DataSource = table;
-
         }
+
 
         private void btn4_delete_Click(object sender, EventArgs e)
         {
-            //Choice to cancel or accept item deletion
-            DialogResult choice = MessageBox.Show("Are you sure you would like to delete this item?", " ", MessageBoxButtons.YesNo);
-            switch (choice)
+            try
             {
-                case DialogResult.Yes:
-                    int delete;
-                    delete = dataGridView_inventory.CurrentCell.RowIndex;
-                    product item = IM.getItemList()[delete];
-                    IM.removeItem(item);
-                    dataGridView_inventory.DataSource = IM.getItemList();
-                    break;
-                case DialogResult.No:
-                    break;
+                //Choice to cancel or accept item deletion
+                DialogResult choice = MessageBox.Show("Are you sure you would like to delete this item?", " ", MessageBoxButtons.YesNo);
+                switch (choice)
+                {
+                    case DialogResult.Yes:
+                        int delete;
+                        delete = dataGridView_inventory.CurrentCell.RowIndex;
+                        Product item = IM.getItemList()[delete];
+                        IM.removeItem(item);
+                        dataGridView_inventory.DataSource = IM.getItemList();
+                        break;
+                    case DialogResult.No:
+                        break;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Please make sure that you've selected an item to delete.");
             }
         }
 
         private void btn1_addItem_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 //Adding a new item to the data grid view
-                product item = new product();
+                Product item = new Product();
                 item.prodID = textBox1_ID.Text;
                 item.title = textBox2_title.Text;
                 item.genre = textBox3_genre.Text;
@@ -83,8 +93,8 @@ namespace InventoryManager
                 StreamWriter outFile = new StreamWriter("inventoryTextFile.txt", true);
                 for (int i = 0; i < 1; i++)
                 {
-                    outFile.WriteLine(item.prodID[i] + ", " + item.title + ", " + item.genre + ", " + item.releaseDate
-                        + ", " + item.price + ", " + item.stockQnty);
+                    outFile.WriteLine(item.prodID + ", " + item.title + ", " + item.genre + ", " + item.releaseDate
+                            + ", " + item.price + ", " + item.stockQnty);
                 }
                 outFile.Flush();
                 outFile.Close();
@@ -110,7 +120,7 @@ namespace InventoryManager
                 //Restock any item that you'd like
                 int item = dataGridView_inventory.CurrentCell.RowIndex;
                 int amount = int.Parse(textBox10_restockAmount.Text);
-                product restockItem = IM.getItemList()[item];
+                Product restockItem = IM.getItemList()[item];
                 IM.restockItem(amount, restockItem);
                 dataGridView_inventory.DataSource = IM.getItemList();
             }
@@ -136,7 +146,7 @@ namespace InventoryManager
                 MessageBox.Show("$" + IM.findByPrice(double.Parse(searchPrice)).price + " movie found. Item info: " + IM.findByPrice(double.Parse(searchPrice)) + ".");
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Please make sure to fill out the text boxes with the appropriate information.");
             }

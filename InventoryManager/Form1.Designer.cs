@@ -44,6 +44,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox10_restockAmount = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.btn3_restock = new System.Windows.Forms.Button();
             this.btn4_delete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -55,15 +58,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView_inventory = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox10_restockAmount = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_inventory)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn1_addItem
@@ -219,6 +219,34 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBox10_restockAmount);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.btn3_restock);
+            this.groupBox2.Location = new System.Drawing.Point(321, 403);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(281, 219);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Restock An Item";
+            // 
+            // textBox10_restockAmount
+            // 
+            this.textBox10_restockAmount.Location = new System.Drawing.Point(6, 49);
+            this.textBox10_restockAmount.Name = "textBox10_restockAmount";
+            this.textBox10_restockAmount.Size = new System.Drawing.Size(100, 22);
+            this.textBox10_restockAmount.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 17);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Amount";
+            // 
             // btn3_restock
             // 
             this.btn3_restock.Location = new System.Drawing.Point(187, 172);
@@ -322,34 +350,6 @@
             this.dataGridView_inventory.Size = new System.Drawing.Size(1068, 358);
             this.dataGridView_inventory.TabIndex = 0;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 29);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 17);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Amount";
-            // 
-            // textBox10_restockAmount
-            // 
-            this.textBox10_restockAmount.Location = new System.Drawing.Point(6, 49);
-            this.textBox10_restockAmount.Name = "textBox10_restockAmount";
-            this.textBox10_restockAmount.Size = new System.Drawing.Size(100, 22);
-            this.textBox10_restockAmount.TabIndex = 19;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox10_restockAmount);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.btn3_restock);
-            this.groupBox2.Location = new System.Drawing.Point(321, 403);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(281, 219);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Restock An Item";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -357,17 +357,17 @@
             this.ClientSize = new System.Drawing.Size(1112, 671);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Inventory Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_inventory)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }

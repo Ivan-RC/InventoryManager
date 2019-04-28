@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManager
 {
-    public class product
+    public class Product
     {
         public string prodID { set; get; }
         public string title { set; get; }
@@ -15,7 +15,7 @@ namespace InventoryManager
         public double price { set; get; }
         public int stockQnty { set; get; }
 
-        public product()
+        public Product()
         {
             prodID = "";
             title = "";

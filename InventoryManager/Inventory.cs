@@ -6,42 +6,42 @@ using System.Threading.Tasks;
 
 namespace InventoryManager
 {
-    public class inventory
+    public class Inventory
     {
-        public List<product> items;
+        public List<Product> items;
 
-        public inventory()
+        public Inventory()
         {
             //initializing attributes
-            items = new List<product>();
+            items = new List<Product>();
         }
 
         //Make an array of the items in the manager
-        public product[] getItemArray()
+        public Product[] getItemArray()
         {
             int index = 0;
-            product[] itemArr = new product[items.Count];
-            foreach (product item in items)
+            Product[] itemArr = new Product[items.Count];
+            foreach (Product item in items)
             {
-                product i = item;
+                Product i = item;
                 itemArr[index++] = i;
             }
             return itemArr;
         }
 
-        public List<product> getItemList()
+        public List<Product> getItemList()
         {
-            List<product> listIM = new List<product>();
+            List<Product> listIM = new List<Product>();
 
-            foreach (product i in items)
+            foreach (Product i in items)
             {
-                product item = i;
+                Product item = i;
                 listIM.Add(i);
             }
             return listIM;
         }
 
-        public bool addItem(product item)
+        public bool addItem(Product item)
         {
             if (items.Contains(item))
                 return false;
@@ -49,14 +49,14 @@ namespace InventoryManager
             return true;
         }
 
-        public bool removeItem(product item)
+        public bool removeItem(Product item)
         {
             //Ability to remove an item from the list
             items.Remove(item);
             return true;
         }
 
-        public bool restockItem(int count, product item)
+        public bool restockItem(int count, Product item)
         {
             //logic for restocking an item
             for (int i = 0; i < items.Count(); i++)
@@ -77,10 +77,10 @@ namespace InventoryManager
             }
         }
 
-        public product findByID(string id)
+        public Product findByID(string id)
         {
             //Searches for an item by its unique id
-            product result = null;
+            Product result = null;
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].prodID == id)
@@ -91,10 +91,10 @@ namespace InventoryManager
             return result;
         }
 
-        public product findByGenre(string Genre)
+        public Product findByGenre(string Genre)
         {
             //Searches for an item by its title
-            product result = null;
+            Product result = null;
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].genre == Genre)
@@ -105,10 +105,10 @@ namespace InventoryManager
             return result;
         }
 
-        public product findByPrice(double Price)
+        public Product findByPrice(double Price)
         {
             //Searches for item by its price
-            product result = null;
+            Product result = null;
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].price == Price)
