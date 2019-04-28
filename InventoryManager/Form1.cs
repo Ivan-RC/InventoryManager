@@ -22,9 +22,9 @@ namespace InventoryManager
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Attempt to initialize datagridview with info from file
             StreamReader sr = new StreamReader("inventoryTextFile.txt");
             DataTable table = new DataTable();
-
             string[] data = sr.ReadLine().Split(' ');
             foreach (string s in data)
             {
@@ -48,6 +48,7 @@ namespace InventoryManager
 
         private void btn4_delete_Click(object sender, EventArgs e)
         {
+            //Choice to cancel or accept item deletion
             DialogResult choice = MessageBox.Show("Are you sure you would like to delete this item?", " ", MessageBoxButtons.YesNo);
             switch (choice)
             {
@@ -67,6 +68,7 @@ namespace InventoryManager
         {
             try
             {
+                //Adding a new item to the data grid view
                 product item = new product();
                 item.prodID = textBox1_ID.Text;
                 item.title = textBox2_title.Text;
@@ -105,6 +107,7 @@ namespace InventoryManager
         {
             try
             {
+                //Restock any item that you'd like
                 int item = dataGridView_inventory.CurrentCell.RowIndex;
                 int amount = int.Parse(textBox10_restockAmount.Text);
                 product restockItem = IM.getItemList()[item];
@@ -122,6 +125,7 @@ namespace InventoryManager
         {
             try
             {
+                //Substitution for search, hopefully i figure out how to properly search
                 string searchID = textBox7_searchID.Text;
                 MessageBox.Show("Item with id '" + IM.findByID(searchID).prodID + "' found. Item info: " + IM.findByID(searchID) + ".");
 
